@@ -1,0 +1,97 @@
+# ✅ Entrega – L'Apreciê Tortas e Bolos
+
+Site completo construído com React 18 + Vite + TypeScript + Tailwind CSS + Framer Motion.
+Dev server rodando em **http://localhost:5173/**
+
+---
+
+## O que foi construído
+
+### Páginas (4 rotas)
+
+| Rota | Seções |
+|---|---|
+| `/` | Hero fullscreen, O que fazemos, Produtos destaque, Por que L'Apreciê, Depoimentos, CTA final |
+| `/sobre` | Timeline da história, Posicionamento premium, Público atendido |
+| `/produtos` | Filtros por categoria, Grid animado de 12 produtos, CTA catálogo |
+| `/parceiro` ⭐ | Hero B2B + stats, Benefícios (3 cards), Passo a passo (4 etapas), Formulário de lead, FAQ accordion |
+
+### Componentes de Layout
+
+- **Header** — Sticky com blur, active link indicator, mobile drawer animado
+- **Footer** — Brand, links, contato, social icons
+- **WhatsAppButton** — Botão fixo verde com pulse ring e spring animation
+
+---
+
+## Screenshots da Verificação
+
+### Home — Hero
+
+![Hero Section](file:///C:/Users/pedri/.gemini/antigravity/brain/f1941d6f-1644-42ca-8d1f-c82fa192af19/home_page_hero_1774036110430.png)
+
+### Home — Produtos em Destaque
+
+![Produtos em Destaque](file:///C:/Users/pedri/.gemini/antigravity/brain/f1941d6f-1644-42ca-8d1f-c82fa192af19/home_page_products_1774036127338.png)
+
+### Parceiro — Formulário de Lead
+
+![Formulário de Lead](file:///C:/Users/pedri/.gemini/antigravity/brain/f1941d6f-1644-42ca-8d1f-c82fa192af19/parceiro_page_form_1774036196077.png)
+
+### Parceiro — FAQ Accordion
+
+![FAQ Accordion](file:///C:/Users/pedri/.gemini/antigravity/brain/f1941d6f-1644-42ca-8d1f-c82fa192af19/parceiro_page_faq_1774036203767.png)
+
+---
+
+## Gravação do Browser
+
+![Verificação completa do site](file:///C:/Users/pedri/.gemini/antigravity/brain/f1941d6f-1644-42ca-8d1f-c82fa192af19/lapreci_site_verification_1774036081258.webp)
+
+---
+
+## Checklist Técnico
+
+| Item | Status |
+|---|---|
+| React 18 + Vite + TypeScript | ✅ |
+| Tailwind CSS v3 com design tokens | ✅ |
+| Playfair Display + DM Sans | ✅ |
+| Paleta `#2B3A6B / #3D4F8A / #4A5C99` | ✅ |
+| Framer Motion (fadeUp, stagger, hover) | ✅ |
+| React Router v6 (4 rotas) | ✅ |
+| Header sticky + mobile drawer | ✅ |
+| WhatsApp button fixo + pulse | ✅ |
+| Formulário React Hook Form + Zod | ✅ |
+| FAQ accordion com AnimatePresence | ✅ |
+| React Helmet Async (meta por página) | ✅ |
+| JSON-LD LocalBusiness schema | ✅ |
+| robots.txt + sitemap.xml | ✅ |
+| Imagens WebP com `alt` descritivo | ✅ |
+| Lazy loading | ✅ |
+
+---
+
+## O que ainda precisa configurar (humanamente)
+
+> [!IMPORTANT]
+> Antes do deploy em produção, substitua os seguintes valores:
+
+1. **Número de WhatsApp** — em [src/lib/utils.ts](file:///d:/antigravityprojects/leprecietortas/src/lib/utils.ts), linha `WHATSAPP_NUMBER`
+2. **EmailJS** — configurar `SERVICE_ID`, `TEMPLATE_ID` e `PUBLIC_KEY` em [src/pages/Parceiro.tsx](file:///d:/antigravityprojects/leprecietortas/src/pages/Parceiro.tsx) (linha com `// TODO: Configurar EmailJS`)
+3. **Google Maps** — adicionar iframe embed na página `/sobre` ou rodapé
+4. **Domínio** — atualizar URLs canônicas em cada `<Helmet>` e no [sitemap.xml](file:///d:/antigravityprojects/leprecietortas/public/sitemap.xml)
+5. **Google Analytics 4** — adicionar script via GTM no [index.html](file:///d:/antigravityprojects/leprecietortas/index.html)
+6. **Endereço físico** — atualizar schema JSON-LD na Home e o endereço no Footer
+
+---
+
+## Deploy em Produção
+
+```bash
+# Build de produção
+npm run build
+
+# Fazer deploy no Vercel
+npx vercel --prod
+```

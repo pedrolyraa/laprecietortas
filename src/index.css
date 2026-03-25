@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2B3A6B;
+    --color-secondary: #3D4F8A;
+    --color-accent: #4A5C99;
+    --color-bg: #F4F6FB;
+    --color-text: #FFFFFF;
+    --color-text-dark: #1C2340;
+    --color-muted: #8A96C0;
+
+    --background: 225 50% 98%;
+    --foreground: 225 40% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 40% 15%;
+    --border: 225 30% 88%;
+    --input: 225 30% 88%;
+    --ring: 225 57% 30%;
+    --secondary: 225 30% 94%;
+    --secondary-foreground: 225 40% 15%;
+    --muted: 225 30% 94%;
+    --muted-foreground: 225 20% 55%;
+    --accent: 225 40% 60%;
+    --accent-foreground: 0 0% 100%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* Offset for fixed header */
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-dark font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #3D4F8A 0%, #4A5C99 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-6 md:px-12 lg:px-20;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
