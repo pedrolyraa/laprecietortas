@@ -4,7 +4,6 @@ import { m, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import emailjs from '@emailjs/browser'
 import { ArrowRight, CheckCircle2, TrendingUp, DollarSign, Clock, ChevronDown, MessageSquare, Package, Handshake, BarChart3 } from 'lucide-react'
 import { WHATSAPP_URL, WHATSAPP_NUMBER } from '@/lib/utils'
 import { trackEvent } from '@/lib/analytics'
@@ -67,51 +66,31 @@ export function Parceiro() {
 
   const onSubmit = async (data: LeadFormData) => {
     trackEvent('lead_form_submit', { form: 'parceiro_b2b' })
-    // ──────────────────────────────────────────────
-    // EMAILJS SETUP — preencha com suas credenciais:
-    // 1. Crie conta em https://www.emailjs.com
-    // 2. Adicione um Email Service (Gmail)
-    // 3. Crie um Email Template com as variáveis abaixo
-    // 4. Substitua os valores EMAILJS_* abaixo
-    // ──────────────────────────────────────────────
-    // @ts-ignore
-    const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
-    // @ts-ignore
-    const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-    // @ts-ignore
-    const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-
-    const templateParams = {
-      from_name:    data.nome,
-      empresa:      data.empresa,
-      cidade:       data.cidade,
-      telefone:     data.telefone,
-      tipo_negocio: data.tipoNegocio,
-      mensagem:     data.mensagem || 'Sem mensagem adicional',
-      to_email:     'laprecietortas@gmail.com',
-    }
-
     try {
-      if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
-      } else {
-        // Fallback WhatsApp enquanto EmailJS não está configurado
-        const msg = encodeURIComponent(
-          `*Novo Lead – L'Apreciê Parceiro*\n\n` +
-          `*Nome:* ${data.nome}\n` +
-          `*Empresa:* ${data.empresa}\n` +
-          `*Cidade:* ${data.cidade}\n` +
-          `*Telefone:* ${data.telefone}\n` +
-          `*Tipo de Negócio:* ${data.tipoNegocio}\n` +
-          `*Mensagem:* ${data.mensagem || 'Sem mensagem adicional'}`
-        )
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank')
-      }
+      const res = await fetch('https://formsubmit.co/ajax/laprecietortas@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Novo lead de parceria vindo do site!! – ${data.nome}`,
+          name: data.nome,
+          empresa: data.empresa,
+          cidade: data.cidade,
+          telefone: data.telefone,
+          tipo_negocio: data.tipoNegocio,
+          message: data.mensagem || 'Sem mensagem adicional',
+        }),
+      })
+
+      if (!res.ok) throw new Error(`FormSubmit: ${res.status}`)
+
       setSubmitted(true)
       reset()
     } catch (err) {
-      console.error('EmailJS error:', err)
-      // Se EmailJS falhar, abre WhatsApp como safety net
+      console.error('FormSubmit error:', err)
+      // Fallback WhatsApp se o envio falhar
       const msg = encodeURIComponent(
         `*Novo Lead – L'Apreciê Parceiro*\n\n` +
         `*Nome:* ${data.nome}\n*Empresa:* ${data.empresa}\n` +
@@ -168,7 +147,7 @@ export function Parceiro() {
                 variants={fadeUp}
                 className="text-white/65 text-xl mb-8 leading-relaxed max-w-lg"
               >
-                Aumente o ticket médio, reduza custos operacionais e fidelize clientes 
+                Aumente o ticket médio, reduza custos operacionais e fidelize clientes
                 com tortas e bolos artesanais prontos para servir.
               </m.p>
 
@@ -254,7 +233,7 @@ export function Parceiro() {
                 Benefícios do modelo
               </h2>
               <p className="text-gray-500 max-w-xl mx-auto">
-                Desenvolvemos um modelo de fornecimento pensado para facilitar a vida de quem 
+                Desenvolvemos um modelo de fornecimento pensado para facilitar a vida de quem
                 gerencia um negócio de alimentação.
               </p>
             </m.div>
@@ -333,7 +312,7 @@ export function Parceiro() {
             <div className="relative">
               {/* Connector line */}
               <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              
+
               <m.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
                 {[
                   { icon: MessageSquare, step: '01', title: 'Primeiro contato', desc: 'Entre em contato pelo WhatsApp ou formulário. Enviamos o catálogo completo de produtos.' },
@@ -399,7 +378,7 @@ export function Parceiro() {
                 Pronto para começar?
               </h2>
               <p className="text-white/65 text-lg leading-relaxed mb-8">
-                Preencha o formulário e nossa equipe entrará em contato em até 24 horas 
+                Preencha o formulário e nossa equipe entrará em contato em até 24 horas
                 com todas as informações sobre como iniciar a parceria.
               </p>
               <ul className="space-y-4">
@@ -448,12 +427,12 @@ export function Parceiro() {
                       Mensagem enviada!
                     </h3>
                     <p className="text-gray-500 mb-6 text-sm">
-                      Nossa equipe entrará em contato em até 24 horas. 
+                      Nossa equipe entrará em contato em até 24 horas.
                       Enquanto isso, você pode nos chamar no WhatsApp!
                     </p>
                     <a
                       href={WHATSAPP_URL}
-                  onClick={() => trackEvent('whatsapp_click')}
+                      onClick={() => trackEvent('whatsapp_click')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-full hocus:bg-green-400 transition-colors"
@@ -485,11 +464,10 @@ export function Parceiro() {
                           {...register('nome')}
                           type="text"
                           placeholder="João Silva"
-                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${
-                            errors.nome
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${errors.nome
                               ? 'border-red-400 bg-red-50'
                               : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-                          } outline-none`}
+                            } outline-none`}
                         />
                         {errors.nome && (
                           <p className="mt-1 text-red-500 text-xs">{errors.nome.message}</p>
@@ -503,11 +481,10 @@ export function Parceiro() {
                           {...register('empresa')}
                           type="text"
                           placeholder="Cafeteria Doce Lar"
-                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${
-                            errors.empresa
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${errors.empresa
                               ? 'border-red-400 bg-red-50'
                               : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-                          } outline-none`}
+                            } outline-none`}
                         />
                         {errors.empresa && (
                           <p className="mt-1 text-red-500 text-xs">{errors.empresa.message}</p>
@@ -524,11 +501,10 @@ export function Parceiro() {
                           {...register('cidade')}
                           type="text"
                           placeholder="São Paulo"
-                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${
-                            errors.cidade
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${errors.cidade
                               ? 'border-red-400 bg-red-50'
                               : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-                          } outline-none`}
+                            } outline-none`}
                         />
                         {errors.cidade && (
                           <p className="mt-1 text-red-500 text-xs">{errors.cidade.message}</p>
@@ -542,11 +518,10 @@ export function Parceiro() {
                           {...register('telefone')}
                           type="tel"
                           placeholder="(11) 99999-9999"
-                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${
-                            errors.telefone
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors ${errors.telefone
                               ? 'border-red-400 bg-red-50'
                               : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-                          } outline-none`}
+                            } outline-none`}
                         />
                         {errors.telefone && (
                           <p className="mt-1 text-red-500 text-xs">{errors.telefone.message}</p>
@@ -560,11 +535,10 @@ export function Parceiro() {
                       </label>
                       <select
                         {...register('tipoNegocio')}
-                        className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-white ${
-                          errors.tipoNegocio
+                        className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-white ${errors.tipoNegocio
                             ? 'border-red-400 bg-red-50'
                             : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-                        } outline-none`}
+                          } outline-none`}
                       >
                         <option value="">Selecione...</option>
                         <option value="cafeteria">Cafeteria</option>
@@ -610,7 +584,7 @@ export function Parceiro() {
                     </button>
 
                     <p className="text-center text-xs text-gray-400">
-                      Ao enviar, você concorda com nossa política de privacidade. 
+                      Ao enviar, você concorda com nossa política de privacidade.
                       Sem spam, prometemos.
                     </p>
                   </form>

@@ -39,7 +39,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/images/logo_png.svg"
+              src="/images/logo_png.png"
               alt="L'Apreciê Tortas e Bolos"
               className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-md"
             />

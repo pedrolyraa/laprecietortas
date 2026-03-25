@@ -12,13 +12,13 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/images/logo_png.svg"
+                src="/images/logo_png.png"
                 alt="L'Apreciê Tortas e Bolos"
                 className="h-20 w-auto object-contain"
               />
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Fornecimento B2B de tortas doces, salgadas e bolos artesanais premium. 
+              Fornecimento B2B de tortas doces, salgadas e bolos artesanais premium.
               Produto padronizado, pronto para servir e revender.
             </p>
             <div className="flex gap-4 mt-6">
