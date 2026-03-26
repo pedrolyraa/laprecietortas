@@ -73,7 +73,7 @@ paths.forEach((path) => {
 
   let productKey = base
   let productName = title
-  let description = customDescriptions[base] || 'Produto artesanal com ingredientes selecionados, feito sob os mais altos padrões de qualidade L\'Apreciê.'
+  let description = customDescriptions[base] || 'Produto artesanal com ingredientes selecionados, feito sob os mais altos padrões de qualidade L\'apreciê.'
 
   // Exceção (Regra B): Agrupar Bolos Confeitados e Sobremesas Individuais
   if (categorySlug === 'bolos-confeitados') {
@@ -95,7 +95,7 @@ paths.forEach((path) => {
       description,
       category: categorySlug,
       images: [],
-      alt: `${productName} para revenda B2B`,
+      alt: `${productName} para revenda`,
       featured: true, // Mark all as featured so they show up everywhere, or could customize
     })
   }
@@ -129,7 +129,7 @@ export const testimonials = [
   },
   {
     id: '3',
-    text: 'Hoje 30% da nossa receita vem dos produtos L\'Apreciê. Aumentou nosso ticket médio e fidelizou clientes.',
+    text: 'Hoje 30% da nossa receita vem dos produtos L\'apreciê. Aumentou nosso ticket médio e fidelizou clientes.',
     author: 'Claudia Alves',
     business: 'Bistrô da Claudia',
     location: 'Santos, SP',

@@ -27,10 +27,10 @@ export function Home() {
   return (
     <>
       <Helmet>
-        <title>L'Apreciê | Fornecedor de Tortas e Bolos para Cafeterias e Empórios</title>
+        <title>L'apreciê | Fornecedor de Tortas e Bolos para Cafeterias e Empórios</title>
         <meta
           name="description"
-          content="Fornecimento B2B de tortas doces, salgadas e bolos artesanais premium para cafeterias, empórios e restaurantes. Produto padronizado, pronto para revender."
+          content="Fornecimento para o seu negócio de tortas doces, salgadas e bolos artesanais premium para cafeterias, empórios e restaurantes. Produto padronizado, pronto para revender."
         />
         <link rel="canonical" href="https://laprecietortas.com.br/" />
         {/* LCP Preload: Pré-carregar a imagem principal de fundo para máxima performance */}
@@ -38,7 +38,7 @@ export function Home() {
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "L'Apreciê Tortas e Bolos",
+          "name": "L'apreciê Tortas e Bolos",
           "description": "Fornecedora premium de tortas e bolos artesanais para cafeterias, empórios e restaurantes",
           "cnpj": "27.919.179/0001-31",
           "address": {
@@ -69,7 +69,7 @@ export function Home() {
         {/* Background image natively loaded for LCP */}
         <img
           src="/images/hero/hero.webp"
-          alt="Tortas Doces, Salgadas e Bolos Artesanais Premium L'Apreciê"
+          alt="Tortas Doces, Salgadas e Bolos Artesanais Premium L'apreciê"
           fetchPriority="high"
           loading="eager"
           decoding="sync"
@@ -101,7 +101,7 @@ export function Home() {
             <m.div variants={fadeUp} className="mb-8 flex justify-center w-full">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white/90 text-[13px] md:text-sm font-medium backdrop-blur-sm shadow-sm">
                 <Star size={14} className="text-yellow-400" fill="currentColor" />
-                Fornecedor Premium B2B · São Paulo
+                Fornecedor Premium B2B · Campinas e Região
               </span>
             </m.div>
 
@@ -186,7 +186,7 @@ export function Home() {
                 <em>profissional na entrega</em>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                Somos fornecedores especializados em tortas e bolos premium para o mercado B2B.
+                Somos fornecedores especializados em tortas e bolos premium para cafeterias e empórios comerciais.
                 Cada produto é preparado com ingredientes selecionados, padronizado para servir
                 diretamente na mesa do seu cliente.
               </p>
@@ -280,7 +280,7 @@ export function Home() {
                 Diferenciais
               </span>
               <h2 className="font-display text-4xl md:text-5xl text-white font-bold mb-4">
-                Por que L'Apreciê?
+                Por que L'apreciê?
               </h2>
               <p className="text-white/60 max-w-xl mx-auto">
                 Entendemos o desafio de quem gerencia um negócio de alimentação.
@@ -432,7 +432,7 @@ export function Home() {
               <em>premium ao seu negócio?</em>
             </h2>
             <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-              Entre em contato agora e descubra como a L'Apreciê pode transformar
+              Entre em contato agora e descubra como a L'apreciê pode transformar
               o cardápio do seu estabelecimento.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

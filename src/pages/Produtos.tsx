@@ -48,10 +48,10 @@ export function Produtos() {
   return (
     <>
       <Helmet>
-        <title>Produtos | Tortas para Revenda – L'Apreciê</title>
+        <title>Produtos | Tortas para Revenda – L'apreciê</title>
         <meta
           name="description"
-          content="Catálogo completo de tortas doces, salgadas, bolos caseiros, bolos confeitados e sobremesas individuais para revenda. Fornecimento B2B premium para cafeterias e empórios."
+          content="Catálogo completo de tortas doces, salgadas, bolos caseiros, bolos confeitados e sobremesas individuais para revenda. Fornecimento premium para cafeterias e empórios."
         />
         <link rel="canonical" href="https://laprecietortas.com.br/produtos" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
@@ -60,14 +60,14 @@ export function Produtos() {
       {/* Hero */}
       <section className="pt-32 pb-20 section-padding" style={{ backgroundColor: '#2B3A6B' }}>
         <div className="container-custom">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mt-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mt-5">
             <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
               <span className="text-sm font-semibold text-white/50 uppercase tracking-widest mb-3 block">
-                Catálogo B2B
+                Catálogo para Revenda
               </span>
               <h1 className="font-display text-5xl md:text-6xl text-white font-bold mb-4 leading-tight">
                 Nossos produtos

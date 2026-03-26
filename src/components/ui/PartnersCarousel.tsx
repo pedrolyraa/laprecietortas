@@ -4,8 +4,12 @@ import { m } from 'framer-motion'
 
 
 const partners = [
+  // LEMBRETE IMPORTANTE: Verifique se a extensão (.png/.webp) e o nome literal do arquivo
+  // no seu computador estão EXATAMENTE iguais ao nome listado abaixo, incluindo letras
+  // maiúsculas e minúsculas. O Vite/React é case-sensitive (ex: Logo.png != logo.png).
   { name: 'Aromatta Café', img: 'aromattacafe' },
   { name: 'Baleno Café', img: 'balenocafe' },
+  { name: 'Bialetti', img: 'logo_preto-bialetti' },
   { name: 'Café do Rico', img: 'cafedorico' },
   { name: 'Logo Canto', img: 'logo-canto', className: 'scale-[1.6]' },
   { name: 'Coffe Roasters', img: 'cofferoasters' },
@@ -13,6 +17,7 @@ const partners = [
   { name: 'Doce & Café', img: 'doce-cafe' },
   { name: 'Pancremo', img: 'pancremo' },
   { name: 'Prema', img: 'prema' },
+  { name: 'PUB KFE', img: 'pubkfe' },
   { name: 'Spagnol', img: 'spagnol' },
 ]
 
@@ -51,7 +56,7 @@ export function PartnersCarousel() {
       {/* Opção A: CSS Grid/Flex Nativo com Snap Mandatory para performance extrema */}
       <div
         ref={carouselRef}
-        className="flex gap-8 md:gap-12 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth items-center py-4"
+        className="flex gap-6 md:gap-12 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth items-center py-4 px-4 md:px-0"
       >
         {partners.map((partner) => {
           // Add a type cast or allow optional chaining, but in JS/TS an inline optional property works fine if defined in the array
@@ -59,7 +64,7 @@ export function PartnersCarousel() {
           return (
             <div
               key={partner.name}
-              className="flex-none w-[45%] sm:w-[30%] md:w-[22%] lg:w-[16%] snap-center flex items-center justify-center grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+              className="shrink-0 w-[55%] sm:w-[35%] md:w-[22%] lg:w-[16%] snap-center flex items-center justify-center transition-all duration-300"
             >
               <picture>
                 <source

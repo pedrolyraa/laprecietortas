@@ -15,24 +15,24 @@ const timeline = [
   { year: '2012', title: 'Mimos Sobremesas', desc: 'Em 22 de fevereiro nasce a Mimos Sobremesas — sem loja, vendendo de porta em porta em salões e empresas.' },
   { year: '2018', title: 'Consolidação da marca', desc: 'Seis anos de proximidade com o cliente moldam a essência da marca: qualidade consistente e compromisso com cada entrega.' },
   { year: '2020', title: 'Primeira loja', desc: 'Em plena pandemia, é inaugurada a primeira loja em Campinas, consolidando a marca como referência local.' },
-  { year: '2023', title: 'L\'Apreciê Fábrica B2B', desc: 'Em 1º de dezembro nasce a L\'Apreciê como fábrica — já nos principais shopping centers de Campinas em menos de um mês.' },
+  { year: '2023', title: 'L\'apreciê Fábrica B2B', desc: 'Em 1º de dezembro nasce a L\'apreciê como fábrica — já nos principais shopping centers de Campinas em menos de um mês.' },
 ]
 
 export function Sobre() {
   return (
     <>
       <Helmet>
-        <title>Sobre | L'Apreciê – Uma história de recomeço, fé e propósito</title>
+        <title>Sobre | L'apreciê – Uma história de recomeço, fé e propósito</title>
         <meta
           name="description"
-          content="Conheça a história da L'Apreciê: de vendas porta a porta em 2012 à fábrica B2B de confeitaria artesanal premium para cafeterias e empórios de Campinas e região."
+          content="Conheça a história da L'apreciê: de vendas porta a porta em 2012 a fornecedora de confeitaria artesanal premium para cafeterias e empórios de Campinas e região."
         />
         <link rel="canonical" href="https://laprecietortas.com.br/sobre" />
       </Helmet>
 
       {/* Hero */}
       <section className="pt-32 pb-20 section-padding" style={{ backgroundColor: '#2B3A6B' }}>
-        <div className="container-custom text-center mt-4">
+        <div className="container-custom text-center mt-5">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ export function Sobre() {
                     Em <strong>22 de fevereiro de 2012</strong>, surgiu a Mimos Sobremesas: sem loja, sem estrutura, com vendas de porta em porta em salões e empresas. Por seis anos, esse caminho de proximidade com o cliente moldou a essência da marca — qualidade consistente e compromisso com cada entrega.
                   </p>
                   <p>
-                    Em <strong>novembro de 2020</strong>, em plena pandemia, foi inaugurada a primeira loja, consolidando a marca como referência em Campinas. Mas o mercado já sinalizava uma oportunidade maior: o fornecimento B2B.
+                    Em <strong>novembro de 2020</strong>, em plena pandemia, foi inaugurada a primeira loja, consolidando a marca como referência em Campinas. Mas o mercado já sinalizava uma oportunidade maior: o fornecimento para revendedores.
                   </p>
                   <p>
                     Em <strong>1º de dezembro de 2023</strong>, nasceu oficialmente a L'apreciê como fábrica — com equipamentos instalados e os primeiros parceiros atendidos em apenas dois dias. Em menos de um mês, já estava presente nos mais renomados shopping centers de Campinas.
@@ -115,7 +115,7 @@ export function Sobre() {
                 {/* Fallback JPEG/PNG Clássico com CLS Defense */}
                 <img
                   src="/images/sobre/imagem_juan.jpeg"
-                  alt="Testemunho visual de parceria comercial L'Apreciê"
+                  alt="Testemunho visual de parceria comercial L'apreciê"
                   loading="lazy"
                   decoding="async"
                   width={1200}
@@ -159,7 +159,7 @@ export function Sobre() {
                 <em>sem abrir mão do artesanal</em>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Na L'Apreciê, acreditamos que produto premium não é apenas ingrediente caro
+                Na L'apreciê, acreditamos que produto premium não é apenas ingrediente caro
                 — é atenção ao detalhe, consistência e presença de marca. Cada produto que sai
                 da nossa cozinha representa o padrão que seu cliente espera de você.
               </p>
@@ -251,7 +251,7 @@ export function Sobre() {
 
             <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100">
               <iframe
-                title="Localização L'Apreciê Tortas e Bolos — Campinas SP"
+                title="Localização L'apreciê Tortas e Bolos — Campinas SP"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2!2d-47.1!3d-22.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua+Apiaba%2C+147%2C+Parque+Universit%C3%A1rio+de+Viracopos%2C+Campinas%2C+SP%2C+13056-485!5e0!3m2!1spt-BR!2sbr!4v1710000000000"
                 width="100%"
                 height="400"

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/', label: 'Início' },
-  { href: '/sobre', label: 'Sobre' },
+  { href: '/sobre', label: 'Nossa História' },
   { href: '/produtos', label: 'Produtos' },
 ]
 
@@ -35,12 +35,12 @@ export function Header() {
             : 'bg-transparent py-4 md:py-5'
         )}
       >
-        <div className="container-custom w-full flex items-center justify-between">
+        <div className="container-custom px-4 md:px-6 w-full flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/images/logo_png.png"
-              alt="L'Apreciê Tortas e Bolos"
+              src="/images/logo_laprecie_teste.png"
+              alt="L'apreciê Tortas e Bolos"
               className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-md"
             />
           </Link>
@@ -52,7 +52,7 @@ export function Header() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'text-sm font-medium transition-colors duration-200 relative group',
+                  'text-base font-medium transition-colors duration-200 relative group',
                   location.pathname === link.href
                     ? 'text-white'
                     : 'text-white/75 hocus:text-white'
@@ -74,21 +74,13 @@ export function Header() {
               >
                 Seja Parceiro
               </Link>
-              <a
-                href="https://www.ifood.com.br/delivery/campinas-sp/laprecie-tortas---mimos-sobremesas-confeitaria-parque-universitario-de-viracopos/f782f536-4f98-45c1-b059-2212a29c3a7e"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2 bg-red-600 text-white font-medium text-sm rounded-full hocus:bg-red-700 transition-all duration-200 shadow-lg hocus:-translate-y-0.5"
-              >
-                iFood
-              </a>
             </div>
           </nav>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 rounded-lg hocus:bg-white/10 transition-colors"
+            className="md:hidden text-white min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hocus:bg-white/10 transition-colors"
             aria-label="Abrir menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -115,10 +107,10 @@ export function Header() {
               className="fixed right-0 top-0 h-full w-72 bg-primary z-50 md:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <span className="font-display text-white text-xl font-semibold">L'Apreciê</span>
+                <span className="font-display text-white text-xl font-semibold">L'apreciê</span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white/70 hocus:text-white"
+                  className="text-white/70 hocus:text-white min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg"
                   aria-label="Fechar menu"
                 >
                   <X size={22} />
@@ -152,14 +144,6 @@ export function Header() {
                   >
                     Seja Parceiro
                   </Link>
-                  <a
-                    href="https://www.ifood.com.br/delivery/campinas-sp/laprecie-tortas---mimos-sobremesas-confeitaria-parque-universitario-de-viracopos/f782f536-4f98-45c1-b059-2212a29c3a7e"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center mt-3 px-5 py-3 bg-red-600 text-white font-medium rounded-full hocus:bg-red-700 transition-colors"
-                  >
-                    iFood
-                  </a>
                 </div>
               </nav>
             </m.div>

@@ -92,7 +92,7 @@ export function Parceiro() {
       console.error('FormSubmit error:', err)
       // Fallback WhatsApp se o envio falhar
       const msg = encodeURIComponent(
-        `*Novo Lead – L'Apreciê Parceiro*\n\n` +
+        `*Novo Lead – L'apreciê Parceiro*\n\n` +
         `*Nome:* ${data.nome}\n*Empresa:* ${data.empresa}\n` +
         `*Cidade:* ${data.cidade}\n*Telefone:* ${data.telefone}\n` +
         `*Tipo:* ${data.tipoNegocio}`
@@ -106,10 +106,10 @@ export function Parceiro() {
   return (
     <>
       <Helmet>
-        <title>Seja um Parceiro | Revenda L'Apreciê – Confeitaria Artesanal B2B em Campinas</title>
+        <title>Seja um Parceiro | Revenda L'apreciê – Confeitaria Artesanal em Campinas</title>
         <meta
           name="description"
-          content="Torne-se parceiro da L'Apreciê: fornecedora de confeitaria artesanal premium para cafeterias, empórios e restaurantes na Região Metropolitana de Campinas. Pedido mínimo R$350, entrega 2x/semana."
+          content="Torne-se parceiro da L'apreciê: fornecedora de confeitaria artesanal premium para cafeterias, empórios e restaurantes na Região Metropolitana de Campinas. Pedido mínimo R$350, entrega 2x/semana."
         />
         <link rel="canonical" href="https://laprecietortas.com.br/parceiro" />
       </Helmet>
@@ -227,7 +227,7 @@ export function Parceiro() {
           >
             <m.div variants={fadeUp} className="text-center mb-14">
               <span className="text-sm font-semibold text-primary-soft uppercase tracking-widest mb-3 block">
-                Por que revender L'Apreciê?
+                Por que revender L'apreciê?
               </span>
               <h2 className="font-display text-4xl md:text-5xl text-brand-dark font-bold mb-4">
                 Benefícios do modelo
@@ -245,7 +245,7 @@ export function Parceiro() {
                   accent: 'text-sky-600',
                   bg: 'bg-sky-50',
                   title: 'Aumento de ticket médio',
-                  desc: 'Produtos premium com percepção de valor elevada. Estudos com nossos parceiros mostram aumento de 25–35% no ticket médio quando há tortas L\'Apreciê no cardápio.',
+                  desc: 'Produtos premium com percepção de valor elevada. Estudos com nossos parceiros mostram aumento de 25–35% no ticket médio quando há tortas L\'apreciê no cardápio.',
                   highlight: '+30% ticket médio',
                 },
                 {
@@ -261,7 +261,7 @@ export function Parceiro() {
                   accent: 'text-violet-600',
                   bg: 'bg-violet-50',
                   title: 'Produto padronizado',
-                  desc: 'Cada unidade entregue tem o mesmo sabor, tamanho e apresentação. Seus clientes esperam consistência — e a L\'Apreciê garante isso em cada pedido.',
+                  desc: 'Cada unidade entregue tem o mesmo sabor, tamanho e apresentação. Seus clientes esperam consistência — e a L\'apreciê garante isso em cada pedido.',
                   highlight: '100% padronizado',
                 },
               ].map((item, i) => (
@@ -304,7 +304,7 @@ export function Parceiro() {
                 Como funciona
               </h2>
               <p className="text-gray-500 max-w-lg mx-auto">
-                Em 5 passos simples, você começa a revender produtos L'Apreciê
+                Em 5 passos simples, você começa a revender produtos L'apreciê
                 com acompanhamento da nossa equipe.
               </p>
             </m.div>

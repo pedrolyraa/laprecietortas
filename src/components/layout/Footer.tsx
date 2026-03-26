@@ -13,12 +13,12 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img
                 src="/images/logo_png.png"
-                alt="L'Apreciê Tortas e Bolos"
+                alt="L'apreciê Tortas e Bolos"
                 className="h-20 w-auto object-contain"
               />
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Fornecimento B2B de tortas doces, salgadas e bolos artesanais premium.
+              Fornecimento no atacado de tortas doces, salgadas e bolos artesanais premium.
               Produto padronizado, pronto para servir e revender.
             </p>
             <div className="flex gap-4 mt-6">
@@ -27,7 +27,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hocus:border-white/60 hocus:text-white transition-all duration-200"
-                aria-label="Instagram L'Apreciê"
+                aria-label="Instagram L'apreciê"
               >
                 <Instagram size={18} />
               </a>
@@ -36,7 +36,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hocus:border-white/60 hocus:text-white transition-all duration-200"
-                aria-label="WhatsApp L'Apreciê"
+                aria-label="WhatsApp L'apreciê"
               >
                 <Phone size={18} />
               </a>
@@ -107,7 +107,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
-            © {new Date().getFullYear()} L'Apreciê Tortas e Bolos. Todos os direitos reservados.
+            © {new Date().getFullYear()} L'apreciê Tortas e Bolos. Todos os direitos reservados.
           </p>
           <p className="text-white/30 text-xs">
             Desenvolvido por{' '}
