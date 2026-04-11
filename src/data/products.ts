@@ -21,10 +21,16 @@ const customDescriptions: Record<string, string> = {
   'torta_merengue_de_morango': 'Morangos frescos, suspirinhos e creme finalizador, formando o clássico merengue.',
   'torta_negresco': 'Base e recheio cremoso inspirados no clássico biscoito, com pedaços crocantes.',
   'torta_nuvem_de_banana': 'Torta suave de banana com doce de leite e cobertura super leve.',
-  'torta_de_frango': 'Recheio cremoso de frango desfiado com requeijão artesanal em massa amanteigada folhada.',
+  'torta_de_frango': 'Recheio cremoso de frango desfiado com requeijão artesanal em massa amanteigada folhada. Disponível também em sabores como Palmito Alho Poró e Requeijão. Pode ser fornecida nos tamanhos 2 kg, 1,7 kg e 1 kg Individual.',
   'bolo_de_laranja_com_calda': 'Bolo caseiro fofinho de laranja natural, regado com uma calda cítrica aromática.',
   'bolo_de_limao_com_mousse': 'Bolo macio de limão com cobertura generosa de mousse aerada e refrescante.',
   'bolo_zero_glutem_lactose': 'Desenvolvido especialmente para restrições alimentares, mantendo sabor e textura premium.',
+  'bolo_caseiro_cenoura': 'Clássico bolo de cenoura caseiro com cobertura de chocolate, fofinho e na medida certa — ideal para vitrines e cafeterias.',
+  'bolo_caseiro_milho': 'Bolo de milho cremoso e úmido, com sabor rústico e aconchegante, perfeito para acompanhar um café.',
+  // Sobremesas Individuais — produtos nomeados
+  'pudim': 'Pudim de Leite Moça artesanal com textura sedosa e calda de caramelo. Disponível em diferentes formatos: Individual, de Vidro e de Corte.',
+  'brigadeiro_gourmet': 'Brigadeiro gourmet irresistível, feito com chocolate premium e finalização artesanal — sobremesa individual de alto padrão.',
+  'bolo_gelado': 'Bolo gelado cremoso e refrescante, com camadas de sabor equilibradas, perfeito para vitrines e cardápios sazonais.',
 }
 
 function parseFilenameRule(filename: string) {
@@ -75,15 +81,30 @@ paths.forEach((path) => {
   let productName = title
   let description = customDescriptions[base] || 'Produto artesanal com ingredientes selecionados, feito sob os mais altos padrões de qualidade L\'apreciê.'
 
-  // Exceção (Regra B): Agrupar Bolos Confeitados e Sobremesas Individuais
-  if (categorySlug === 'bolos-confeitados') {
+  // Exceção (Regra B): Agrupar Bolos Confeitados, Tortas Salgadas e Sobremesas Individuais genéricas
+  // Produtos nomeados em sobremesas-individuais (pudim, brigadeiro_gourmet, bolo_gelado)
+  // ficam como cards próprios; apenas os arquivos 'sobremesas_individuais_*' são agrupados.
+  if (categorySlug === 'tortas-salgadas') {
+    productKey = 'tortas-salgadas-variadas'
+    productName = 'Tortas Salgadas'
+    description = 'Tortas salgadas artesanais com recheios cremosos em massa amanteigada folhada. Disponível em sabores como Frango com Requeijão, Palmito Alho Poró e Requeijão. Fornecidas nos tamanhos 2 kg, 1,7 kg e 1 kg Individual.'
+  } else if (categorySlug === 'bolos-confeitados') {
     productKey = 'bolos-confeitados-variados'
     productName = 'Bolos Confeitados Variados'
     description = 'Opções premium de bolos confeitados elaborados com ingredientes nobres e decoração impecável.'
-  } else if (categorySlug === 'sobremesas-individuais') {
+  } else if (categorySlug === 'sobremesas-individuais' && base.startsWith('sobremesas_individuais')) {
     productKey = 'sobremesas-individuais-variadas'
     productName = 'Sobremesas Individuais Variadas'
     description = 'Seleção de sobremesas exclusivas para servir em porções individuais.'
+  } else if (categorySlug === 'sobremesas-individuais' && base === 'pudim') {
+    productKey = 'pudim-de-leite-moca'
+    productName = 'Pudim De Leite Moça'
+  } else if (categorySlug === 'sobremesas-individuais' && base === 'brigadeiro_gourmet') {
+    productKey = 'brigadeiro-gourmet'
+    productName = 'Brigadeiro Gourmet'
+  } else if (categorySlug === 'sobremesas-individuais' && base === 'bolo_gelado') {
+    productKey = 'bolo-gelado'
+    productName = 'Bolo Gelado'
   }
 
   const idStr = `${categorySlug}-${productKey}`

@@ -70,4 +70,13 @@
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
+
+  /* Hide scrollbar on the CSS Scroll Snap carousel rail — all browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE / Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;             /* Chrome / Safari / Opera */
+  }
 }

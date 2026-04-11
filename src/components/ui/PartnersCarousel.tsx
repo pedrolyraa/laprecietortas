@@ -43,7 +43,7 @@ export function PartnersCarousel() {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="relative group/carousel w-full max-w-6xl mx-auto px-4 md:px-12"
     >
-      {/* Left Arrow Button */}
+      {/* Left Arrow Button — desktop only */}
       <button
         onClick={() => scroll('left')}
         className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center bg-white border border-gray-200 shadow-sm rounded-full text-gray-500 hover:text-primary hover:border-primary/50 focus:outline-none transition-all duration-200 xl:-ml-4 opacity-0 group-hover/carousel:opacity-100"
@@ -52,19 +52,32 @@ export function PartnersCarousel() {
         <ChevronLeft size={20} />
       </button>
 
-      {/* Carousel Track */}
-      {/* Opção A: CSS Grid/Flex Nativo com Snap Mandatory para performance extrema */}
+      {/* Mobile fade mask — suaviza as bordas laterais dando o efeito de "infinite scroll"
+          Apenas visual, zero impacto de performance. Escondido em md+. */}
+      <div
+        className="md:hidden absolute inset-y-0 left-0 w-10 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to right, white 10%, transparent)' }}
+      />
+      <div
+        className="md:hidden absolute inset-y-0 right-0 w-10 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to left, white 10%, transparent)' }}
+      />
+
+      {/* Carousel Track
+          - Mobile: overflow-x-auto + snap-x → swipe nativo, zero JS de touch
+          - Desktop: overflow-x-hidden → controlado pelos botões de seta
+          - Item width mobile: 60% → 1 logo centralizado + "peek" do próximo
+          - Item width tablet+: proporcional ao tamanho da tela */}
       <div
         ref={carouselRef}
         className="flex gap-6 md:gap-12 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth items-center py-4 px-4 md:px-0"
       >
         {partners.map((partner) => {
-          // Add a type cast or allow optional chaining, but in JS/TS an inline optional property works fine if defined in the array
           const customClass = (partner as any).className || '';
           return (
             <div
               key={partner.name}
-              className="shrink-0 w-[55%] sm:w-[35%] md:w-[22%] lg:w-[16%] snap-center flex items-center justify-center transition-all duration-300"
+              className="shrink-0 w-[60%] sm:w-[35%] md:w-[22%] lg:w-[16%] snap-center flex items-center justify-center transition-all duration-300"
             >
               <picture>
                 <source
@@ -88,7 +101,7 @@ export function PartnersCarousel() {
         })}
       </div>
 
-      {/* Right Arrow Button */}
+      {/* Right Arrow Button — desktop only */}
       <button
         onClick={() => scroll('right')}
         className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center bg-white border border-gray-200 shadow-sm rounded-full text-gray-500 hover:text-primary hover:border-primary/50 focus:outline-none transition-all duration-200 xl:-mr-4 opacity-0 group-hover/carousel:opacity-100"

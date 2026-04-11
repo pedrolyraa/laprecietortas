@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { m  } from 'framer-motion'
-import { ArrowRight, Star, TrendingUp, Handshake, Package, ShieldCheck, Truck, MapPin, Coffee, ShoppingBag, Building2, ChefHat, Shield, Clock, Users } from 'lucide-react'
+import { m } from 'framer-motion'
+import { ArrowRight, Star, TrendingUp, Handshake, Package, ShieldCheck, Truck, MapPin, Coffee, ShoppingBag, Building2, ChefHat, Shield, Clock, Users, Leaf, Headphones, Sparkles } from 'lucide-react'
 import { WHATSAPP_URL } from '@/lib/utils'
 import { products, testimonials } from '@/data/products'
 import { trackEvent } from '@/lib/analytics'
@@ -62,10 +62,7 @@ export function Home() {
       </Helmet>
 
       {/* ─── 1. HERO ─── */}
-      <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        
-      >
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background image natively loaded for LCP */}
         <img
           src="/images/hero/hero.webp"
@@ -75,92 +72,84 @@ export function Home() {
           decoding="sync"
           width={1920}
           height={1080}
-          className="absolute inset-0 w-full h-full object-cover opacity-100  -z-10"
+          className="absolute inset-0 w-full h-full object-cover -z-10"
         />
-        {/* Gradient overlay */}
+        {/* Gradient overlay — mais denso à esquerda para legibilidade do bloco de texto */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(135deg, rgba(27,35,64,0.97) 0%, rgba(43,58,107,0.88) 60%, rgba(74,92,153,0.70) 100%)',
+              'linear-gradient(105deg, rgba(27,35,64,0.97) 0%, rgba(27,35,64,0.93) 42%, rgba(43,58,107,0.78) 65%, rgba(74,92,153,0.45) 100%)',
           }}
         />
 
-        {/* Decorative circles */}
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-primary-light/10 blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary-soft/10 blur-3xl" />
+        {/* Decorative ambient blobs */}
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-primary-light/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary-soft/10 blur-3xl pointer-events-none" />
 
-        {/* Main content — Ajustado com pt-36 no mobile para fugir do header h-20 gigante */}
-        <div className="relative z-10 container-custom text-center px-4 md:px-6 pb-20 pt-40 md:pt-24 flex flex-col justify-center items-center w-full">
+        {/* Main content — alinhado à esquerda para comunicar autoridade B2B */}
+        <div className="relative z-10 container-custom px-6 md:px-10 pb-24 pt-40 md:pt-32 w-full">
           <m.div
             variants={stagger}
             initial="hidden"
             animate="visible"
-            className="max-w-4xl mx-auto w-full"
+            className="max-w-2xl"
           >
-            <m.div variants={fadeUp} className="mb-8 flex justify-center w-full">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white/90 text-[13px] md:text-sm font-medium backdrop-blur-sm shadow-sm">
-                <Star size={14} className="text-yellow-400" fill="currentColor" />
-                Fornecedor Premium B2B · Campinas e Região
-              </span>
-            </m.div>
-
-            <m.h1
-              variants={fadeUp}
-              className="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-tight font-bold mb-6"
-            >
-              Eleve o cardápio
-              <br />
-              <span className="italic text-white/85">do seu negócio</span>
-            </m.h1>
-
+            {/* Pré-título */}
             <m.p
               variants={fadeUp}
-              className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
+              className="text-white/55 text-[11px] md:text-xs font-medium tracking-wide uppercase mb-7 leading-relaxed max-w-lg border-l-2 border-white/20 pl-3"
             >
-              Tortas doces, salgadas e bolos artesanais prontos para servir e revender.
-              Produto padronizado que aumenta seu ticket médio sem aumentar sua operação.
+              Fornecemos para cafeterias, empórios, confeitarias, buffets, restaurantes, padarias artesanais, hotéis e operações que buscam produtos premium e padronizados.
             </m.p>
 
+            {/* Título principal */}
+            <m.h1
+              variants={fadeUp}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-tight font-bold mb-9"
+            >
+              Transforme sua vitrine com produtos premium{' '}
+              <em className="text-white/80">que vendem mais</em>
+            </m.h1>
+
+            {/* Lista de diferenciais */}
+            <m.ul variants={stagger} className="mb-11 space-y-3.5">
+              {([
+                { Icon: TrendingUp,  text: 'Produtos pensados para aumentar suas vendas e facilitar sua operação.' },
+                { Icon: Leaf,        text: 'Sem conservantes' },
+                { Icon: Sparkles,    text: 'Produto fresco com alto valor percebido' },
+                { Icon: Headphones,  text: 'Suporte contínuo' },
+                { Icon: Handshake,   text: 'Ajudamos você a vender mais' },
+              ] as const).map((item, i) => (
+                <m.li
+                  key={i}
+                  custom={i}
+                  variants={fadeUp}
+                  className="flex items-start gap-3 text-white/70 text-sm md:text-[15px] leading-snug"
+                >
+                  <item.Icon size={14} className="text-white/40 mt-0.5 flex-shrink-0" />
+                  <span>{item.text}</span>
+                </m.li>
+              ))}
+            </m.ul>
+
+            {/* CTAs */}
             <m.div
               variants={fadeUp}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
             >
-              <a
-                href={WHATSAPP_URL}
-                onClick={() => trackEvent('whatsapp_click')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-full hocus:bg-white/90 transition-all duration-200 shadow-2xl hocus:shadow-white/20 hocus:-translate-y-0.5 text-base"
-              >
-                Falar no WhatsApp
-                <ArrowRight size={16} />
-              </a>
               <Link
                 to="/parceiro"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/40 text-white font-semibold rounded-full hocus:border-white hocus:bg-white/10 transition-all duration-200 text-base"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-full hocus:bg-white/90 transition-all duration-200 shadow-2xl hocus:shadow-white/20 hocus:-translate-y-0.5 text-base"
               >
-                Quero Revender
+                Quero ser parceiro
               </Link>
               <Link
                 to="/produtos"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white/80 font-medium rounded-full hocus:border-white/40 hocus:text-white transition-all duration-200 text-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/40 text-white font-semibold rounded-full hocus:border-white hocus:bg-white/10 transition-all duration-200 text-base"
               >
-                Ver Catálogo
+                👉 Solicitar catálogo
               </Link>
-            </m.div>
-
-            {/* Scroll indicator — Integrado ao fluxo visual (em vez de absoluto flutuante) com espaço para não sobrepor */}
-            <m.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
-              className="mt-12 md:mt-16 flex flex-col items-center gap-2 pointer-events-none mx-auto"
-            >
-              <span className="text-white/40 text-xs uppercase tracking-widest">Conheça</span>
-              <m.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent" />
-              </m.div>
             </m.div>
           </m.div>
         </div>
@@ -191,7 +180,7 @@ export function Home() {
                 diretamente na mesa do seu cliente.
               </p>
               <p className="text-gray-500 leading-relaxed">
-                Atendemos cafeterias, empórios gourmet, bistrôs e restaurantes que buscam
+                Atendemos cafeterias, empórios gourmet, bistrôs, restaurantes, hotéis e buffets que buscam
                 um diferencial premium no cardápio sem aumentar a carga operacional.
               </p>
             </m.div>
@@ -240,12 +229,13 @@ export function Home() {
               </p>
             </m.div>
 
-            <m.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <m.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
               {[
                 'tortas-doces-torta_cheescake_frutas_vermelhas',
-                'tortas-salgadas-torta_de_frango',
-                'bolos-caseiros-bolo_de_limao_com_mousse',
-                'linha-zero-bolo_zero_glutem_lactose'
+                'tortas-salgadas-tortas-salgadas-variadas',
+                'tortas-doces-torta_merengue_de_morango',
+                'linha-zero-bolo_zero_glutem_lactose',
+                'bolos-caseiros-bolo_caseiro_cenoura',
               ].map((targetId, i) => {
                 const product = products.find(p => p.id === targetId)
                 if (!product) return null
